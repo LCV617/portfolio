@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums | Portfolio Terminal</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">ALBUMS.EXE</div>
+            <div class="terminal-buttons">
+                <span class="button minimize">_</span>
+                <span class="button maximize">□</span>
+                <span class="button close">×</span>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="terminal-nav">
+                <a href="index.html" class="terminal-nav-item">
+                    <span class="command-prefix">></span> RETOUR
+                </a>
+            </div>
+            
+            <div class="ascii-art" id="albums-title"></div>
+            
+            <div class="albums-grid">
+                <div class="album-item" data-album="album1">
+                    <div class="album-frame">
+                        <div class="album-preview">
+                            <div class="album-image" style="background-image: url('img/photos/album1/preview.jpg');"></div>
+                        </div>
+                        <div class="album-title">
+                            ┌───────────────┐
+                            │ VOYAGE JAPON  │
+                            └───────────────┘
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="album-item" data-album="album2">
+                    <div class="album-frame">
+                        <div class="album-preview">
+                            <div class="album-image" style="background-image: url('img/photos/album2/preview.jpg');"></div>
+                        </div>
+                        <div class="album-title">
+                            ┌───────────────┐
+                            │ ARCHITECTURE  │
+                            └───────────────┘
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="album-item" data-album="album3">
+                    <div class="album-frame">
+                        <div class="album-preview">
+                            <div class="album-image" style="background-image: url('img/photos/album3/preview.jpg');"></div>
+                        </div>
+                        <div class="album-title">
+                            ┌───────────────┐
+                            │ NATURE        │
+                            └───────────────┘
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="prompt">></span>
+                <span class="command-text" id="current-command"></span>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/terminal.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html> 

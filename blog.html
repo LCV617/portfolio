@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Portfolio Terminal</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">BLOG.EXE</div>
+            <div class="terminal-buttons">
+                <span class="button minimize">_</span>
+                <span class="button maximize">□</span>
+                <span class="button close">×</span>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="terminal-nav">
+                <a href="index.html" class="terminal-nav-item">
+                    <span class="command-prefix">></span> RETOUR
+                </a>
+            </div>
+            
+            <div class="ascii-art" id="blog-title"></div>
+            
+            <div class="blog-entries">
+                <div class="blog-entry">
+                    <div class="blog-date">[2023-05-15]</div>
+                    <div class="blog-title">
+                        ┌──────────────────────────────────────────┐
+                        │ LA PHOTOGRAPHIE MINIMALISTE EN 2023      │
+                        └──────────────────────────────────────────┘
+                    </div>
+                    <div class="blog-excerpt">
+                        Exploration des tendances actuelles en photographie minimaliste. 
+                        Comment faire plus avec moins et capturer l'essence des sujets...
+                    </div>
+                    <a href="blog/article1.html" class="blog-read-more">
+                        <span class="command-prefix">></span> LIRE LA SUITE
+                    </a>
+                </div>
+                
+                <div class="terminal-separator">
+                    ────────────────────────────────────────────────────
+                </div>
+                
+                <div class="blog-entry">
+                    <div class="blog-date">[2023-03-22]</div>
+                    <div class="blog-title">
+                        ┌──────────────────────────────────────────┐
+                        │ RETRO-COMPUTING ET ESTHÉTIQUE ASCII      │
+                        └──────────────────────────────────────────┘
+                    </div>
+                    <div class="blog-excerpt">
+                        Un retour sur l'influence de l'informatique des années 80-90 
+                        sur le design web contemporain et la culture numérique actuelle...
+                    </div>
+                    <a href="blog/article2.html" class="blog-read-more">
+                        <span class="command-prefix">></span> LIRE LA SUITE
+                    </a>
+                </div>
+                
+                <div class="terminal-separator">
+                    ────────────────────────────────────────────────────
+                </div>
+                
+                <div class="blog-entry">
+                    <div class="blog-date">[2023-01-10]</div>
+                    <div class="blog-title">
+                        ┌──────────────────────────────────────────┐
+                        │ MON PROCESSUS CRÉATIF                    │
+                        └──────────────────────────────────────────┘
+                    </div>
+                    <div class="blog-excerpt">
+                        Comment j'organise mes idées et mon travail pour maximiser 
+                        la créativité tout en respectant les délais et contraintes...
+                    </div>
+                    <a href="blog/article3.html" class="blog-read-more">
+                        <span class="command-prefix">></span> LIRE LA SUITE
+                    </a>
+                </div>
+            </div>
+            
+            <div class="blog-pagination">
+                <span class="pagination-prev disabled">
+                    <span class="command-prefix">></span> PREV
+                </span>
+                <span class="pagination-info">[PAGE 1/1]</span>
+                <span class="pagination-next disabled">
+                    <span class="command-prefix">></span> NEXT
+                </span>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="prompt">></span>
+                <span class="command-text" id="current-command"></span>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/terminal.js"></script>
+    <script src="js/cursor.js"></script>
+</body>
+</html> 

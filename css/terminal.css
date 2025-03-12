@@ -1,0 +1,543 @@
+/* === STYLES SPÉCIFIQUES AU TERMINAL === */
+
+/* En-tête du terminal */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    padding: 8px 15px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--color-border);
+    user-select: none;
+}
+
+.terminal-title {
+    font-weight: bold;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 50%;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.minimize {
+    background-color: var(--color-warning);
+}
+
+.maximize {
+    background-color: var(--color-accent);
+}
+
+.close {
+    background-color: var(--color-error);
+}
+
+/* Contenu du terminal */
+.terminal-content {
+    padding: var(--terminal-padding);
+    min-height: calc(80vh - 40px);
+    overflow-y: auto;
+}
+
+/* Navigation */
+.terminal-nav {
+    margin-bottom: 1.5rem;
+}
+
+.terminal-nav-item {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 5px 10px;
+    border: 1px solid var(--color-text);
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.terminal-nav-item:hover {
+    background-color: rgba(51, 255, 51, 0.1);
+    text-shadow: 0 0 var(--glow-strength) var(--color-text);
+}
+
+.command-prefix {
+    color: var(--color-accent);
+    margin-right: 5px;
+}
+
+/* Ligne de commande avec curseur */
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-family: 'TopazPlus', monospace;
+}
+
+.prompt {
+    color: var(--color-accent);
+    margin-right: 8px;
+}
+
+.command-text {
+    margin-right: 2px;
+}
+
+/* Animation du curseur clignotant */
+.cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background-color: var(--color-text);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Navigation principale */
+.navigation {
+    margin: 1.5rem 0;
+}
+
+.nav-item {
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-item:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 var(--glow-strength) var(--color-accent);
+}
+
+/* Séquence de démarrage */
+.boot-sequence {
+    font-family: 'TopazPlus', monospace;
+    line-height: 1.5;
+}
+
+.boot-text {
+    white-space: pre-line;
+}
+
+/* Animation de texte qui se tape */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.typing-animation {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 2s steps(40, end);
+}
+
+/* Formulaires style terminal */
+.terminal-form {
+    margin: 1.5rem 0;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.terminal-input, .terminal-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    font-family: 'TopazPlus', monospace;
+    font-size: 16px;
+    outline: none;
+}
+
+.terminal-input:focus, .terminal-textarea:focus {
+    box-shadow: 0 0 5px var(--color-text);
+}
+
+.terminal-button {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    font-family: 'TopazPlus', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.terminal-button:hover {
+    background-color: rgba(51, 255, 51, 0.1);
+    box-shadow: 0 0 5px var(--color-text);
+}
+
+/* Messages d'erreur et de succès */
+.terminal-response {
+    margin-top: 1rem;
+    padding: 10px;
+    border: 1px solid;
+}
+
+.success-message {
+    border-color: var(--color-text);
+    color: var(--color-text);
+    background-color: rgba(51, 255, 51, 0.1);
+}
+
+.error-message {
+    border-color: var(--color-error);
+    color: var(--color-error);
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Pagination */
+.blog-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 10px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.pagination-prev, .pagination-next {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.pagination-prev:hover, .pagination-next:hover {
+    color: var(--color-accent);
+}
+
+.pagination-info {
+    color: var(--color-ui);
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Effet de glitch pour les transitions */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-3px, 3px);
+    }
+    40% {
+        transform: translate(-3px, -3px);
+    }
+    60% {
+        transform: translate(3px, 3px);
+    }
+    80% {
+        transform: translate(3px, -3px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.glitch {
+    position: relative;
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    color: var(--color-accent);
+    z-index: -1;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 5s linear infinite alternate-reverse;
+}
+
+.glitch::after {
+    color: var(--color-accent-alt);
+    z-index: -2;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s linear infinite alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(80px, 9999px, 12px, 0);
+        transform: skew(0.3deg);
+    }
+    5% {
+        clip: rect(78px, 9999px, 52px, 0);
+        transform: skew(0.1deg);
+    }
+    10% {
+        clip: rect(70px, 9999px, 61px, 0);
+        transform: skew(0.5deg);
+    }
+    15% {
+        clip: rect(15px, 9999px, 3px, 0);
+        transform: skew(0.2deg);
+    }
+    20% {
+        clip: rect(13px, 9999px, 75px, 0);
+        transform: skew(0.4deg);
+    }
+    25% {
+        clip: rect(77px, 9999px, 40px, 0);
+        transform: skew(0.8deg);
+    }
+    30% {
+        clip: rect(89px, 9999px, 75px, 0);
+        transform: skew(0.3deg);
+    }
+    35% {
+        clip: rect(76px, 9999px, 9px, 0);
+        transform: skew(0.7deg);
+    }
+    40% {
+        clip: rect(21px, 9999px, 60px, 0);
+        transform: skew(0.1deg);
+    }
+    45% {
+        clip: rect(26px, 9999px, 89px, 0);
+        transform: skew(0.6deg);
+    }
+    50% {
+        clip: rect(41px, 9999px, 32px, 0);
+        transform: skew(0.9deg);
+    }
+    55% {
+        clip: rect(10px, 9999px, 2px, 0);
+        transform: skew(0.7deg);
+    }
+    60% {
+        clip: rect(18px, 9999px, 42px, 0);
+        transform: skew(0.5deg);
+    }
+    65% {
+        clip: rect(84px, 9999px, 22px, 0);
+        transform: skew(0.2deg);
+    }
+    70% {
+        clip: rect(62px, 9999px, 2px, 0);
+        transform: skew(0.8deg);
+    }
+    75% {
+        clip: rect(89px, 9999px, 33px, 0);
+        transform: skew(0.1deg);
+    }
+    80% {
+        clip: rect(26px, 9999px, 13px, 0);
+        transform: skew(0.4deg);
+    }
+    85% {
+        clip: rect(52px, 9999px, 59px, 0);
+        transform: skew(0.3deg);
+    }
+    90% {
+        clip: rect(27px, 9999px, 38px, 0);
+        transform: skew(0.5deg);
+    }
+    95% {
+        clip: rect(99px, 9999px, 3px, 0);
+        transform: skew(0.2deg);
+    }
+    100% {
+        clip: rect(58px, 9999px, 86px, 0);
+        transform: skew(0.6deg);
+    }
+}
+
+/* === STYLES POUR LES ARTICLES DE BLOG === */
+
+/* Header d'article */
+.article-header {
+    margin-bottom: 2rem;
+}
+
+.article-date {
+    font-size: 0.9rem;
+    color: var(--color-ui);
+    margin-bottom: 0.5rem;
+}
+
+.article-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin: 1rem 0;
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Contenu d'article */
+.article-content {
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+.article-content h2 {
+    color: var(--color-accent);
+    margin: 1.5rem 0 1rem 0;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 0.3rem;
+}
+
+.article-content h3 {
+    color: var(--color-text);
+    margin: 1.2rem 0 0.8rem 0;
+}
+
+.article-content p {
+    margin-bottom: 1rem;
+}
+
+.article-content ul, 
+.article-content ol {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+}
+
+.terminal-quote {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-left: 3px solid var(--color-accent);
+    background-color: rgba(0, 255, 255, 0.05);
+    font-style: italic;
+    color: var(--color-ui);
+}
+
+.code-block {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-border);
+    font-family: 'TopazPlus', monospace;
+    white-space: pre;
+    overflow-x: auto;
+    color: var(--color-accent-alt);
+}
+
+/* Footer d'article */
+.article-footer {
+    margin-top: 3rem;
+}
+
+.article-author {
+    margin: 1rem 0;
+    color: var(--color-ui);
+    font-style: italic;
+}
+
+.article-navigation {
+    margin: 1.5rem 0;
+}
+
+.article-nav-next, 
+.article-nav-prev {
+    display: block;
+    padding: 0.5rem 0;
+    transition: all 0.2s;
+}
+
+.article-nav-next:hover, 
+.article-nav-prev:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 var(--glow-strength) var(--color-accent);
+}
+
+/* Commentaires */
+.article-comments {
+    margin-top: 2rem;
+}
+
+.article-comments h3 {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.comment {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-border);
+}
+
+.comment-header {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-author {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.comment-date {
+    color: var(--color-ui);
+    font-size: 0.9rem;
+}
+
+.comment-body {
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+/* Styles pour les notes d'album */
+.album-notes {
+    margin: 2rem 0;
+    line-height: 1.5;
+}
+
+.album-notes h3 {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.album-notes p {
+    margin-bottom: 1rem;
+}
+
+.terminal-info {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: rgba(51, 255, 51, 0.05);
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+} 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Japon | Albums | Portfolio Terminal</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/terminal.css">
+    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">ALBUM: VOYAGE JAPON</div>
+            <div class="terminal-buttons">
+                <span class="button minimize">_</span>
+                <span class="button maximize">□</span>
+                <span class="button close">×</span>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="terminal-nav">
+                <a href="../albums.html" class="terminal-nav-item">
+                    <span class="command-prefix">></span> RETOUR ALBUMS
+                </a>
+                <a href="../index.html" class="terminal-nav-item">
+                    <span class="command-prefix">></span> ACCUEIL
+                </a>
+            </div>
+            
+            <div class="ascii-art" id="album-title">
+            ┌──────────────────────────────────────────────────┐
+            │                 VOYAGE AU JAPON                  │
+            │         TOKYO - KYOTO - OSAKA - NARA             │
+            └──────────────────────────────────────────────────┘
+            </div>
+            
+            <div class="album-metadata">
+                <div class="album-date">[DATES: 2023-04-10 - 2023-04-24]</div>
+                <div class="album-description">
+                    Exploration des contrastes entre tradition et modernité au Japon.
+                    Des gratte-ciels futuristes de Tokyo aux temples séculaires de Kyoto.
+                </div>
+                <div class="tags">
+                    <span class="tag">Japon</span>
+                    <span class="tag">Voyage</span>
+                    <span class="tag">Architecture</span>
+                    <span class="tag">Culture</span>
+                </div>
+            </div>
+            
+            <!-- Visionneuse de photos -->
+            <div class="photo-viewer">
+                <div class="photo-container">
+                    <!-- Photos (normalement chargées depuis une base de données ou JSON) -->
+                    <img src="../img/photos/album1/photo1.jpg" class="photo" data-title="Crépuscule à Tokyo" data-info="Vue panoramique de la skyline de Tokyo au coucher du soleil. Les lumières de la ville commencent à briller.">
+                    <img src="../img/photos/album1/photo2.jpg" class="photo" data-title="Temple Senso-ji" data-info="Le fameux temple Senso-ji à Asakusa, un des plus anciens temples de Tokyo.">
+                    <img src="../img/photos/album1/photo3.jpg" class="photo" data-title="Quartier de Shibuya" data-info="Le célèbre carrefour de Shibuya, l'un des passages piétons les plus fréquentés au monde.">
+                    <img src="../img/photos/album1/photo4.jpg" class="photo" data-title="Jardin à Kyoto" data-info="Jardin zen traditionnel à Kyoto, représentant l'harmonie et la sérénité.">
+                    <img src="../img/photos/album1/photo5.jpg" class="photo" data-title="Fushimi Inari" data-info="Les tunnels de torii rouges au sanctuaire Fushimi Inari à Kyoto.">
+                </div>
+                
+                <div class="photo-controls">
+                    <button class="photo-nav prev">
+                        <span class="command-prefix">></span> PREV
+                    </button>
+                    <span class="photo-counter">[1/5]</span>
+                    <span class="fullscreen-button">[PLEIN ÉCRAN]</span>
+                    <button class="photo-nav next">
+                        <span class="command-prefix">></span> NEXT
+                    </button>
+                </div>
+            </div>
+            
+            <div class="photo-description">
+                <div class="photo-title">Crépuscule à Tokyo</div>
+                <div class="photo-info">Vue panoramique de la skyline de Tokyo au coucher du soleil. Les lumières de la ville commencent à briller.</div>
+            </div>
+            
+            <div class="album-notes">
+                <div class="terminal-separator">
+                    ────────────────────────────────────────────────────
+                </div>
+                
+                <h3>NOTES DE VOYAGE</h3>
+                <p>Le Japon est un pays de contrastes fascinants. À Tokyo, j'ai été frappé par l'organisation impeccable 
+                et le respect des traditions malgré l'hypermodernité. Les cerisiers en fleurs à Kyoto créaient une 
+                atmosphère presque irréelle.</p>
+                
+                <p>Les techniques photographiques utilisées ont été adaptées selon les environnements: 
+                pose longue pour les scènes nocturnes de Tokyo, et cadrage serré pour capturer les détails 
+                des temples et jardins traditionnels.</p>
+                
+                <div class="terminal-info">
+                    Pour voir toutes les photos en haute résolution ou pour commander des tirages,
+                    merci de me contacter directement par le formulaire de contact.
+                </div>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="prompt">></span>
+                <span class="command-text" id="current-command"></span>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/terminal.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/gallery.js"></script>
+</body>
+</html> 

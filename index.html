@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Terminal</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">TERMINAL v1.0</div>
+            <div class="terminal-buttons">
+                <span class="button minimize">_</span>
+                <span class="button maximize">□</span>
+                <span class="button close">×</span>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="boot-sequence">
+                <div class="boot-text" id="boot-text"></div>
+            </div>
+            
+            <div class="main-content hidden" id="main-content">
+                <div class="ascii-art" id="ascii-title"></div>
+                
+                <div class="terminal-input-line">
+                    <span class="prompt">></span>
+                    <span class="command-text" id="current-command"></span>
+                    <span class="cursor" id="cursor">█</span>
+                </div>
+                
+                <div class="navigation">
+                    <div class="nav-item" data-command="ALBUMS">
+                        <span class="command-prefix">></span> ALBUMS
+                    </div>
+                    <div class="nav-item" data-command="BLOG">
+                        <span class="command-prefix">></span> BLOG
+                    </div>
+                    <div class="nav-item" data-command="CONTACT">
+                        <span class="command-prefix">></span> CONTACT
+                    </div>
+                    <div class="nav-item" data-command="ABOUT">
+                        <span class="command-prefix">></span> ABOUT
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/terminal.js"></script>
+    <script src="js/cursor.js"></script>
+</body>
+</html> 

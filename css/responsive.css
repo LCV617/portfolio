@@ -1,0 +1,329 @@
+/* === STYLES RESPONSIVES === */
+
+/* Tablettes et écrans moyens (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    :root {
+        --terminal-width: 95%;
+    }
+    
+    html, body {
+        font-size: 15px;
+    }
+    
+    .terminal-container {
+        min-height: 75vh;
+    }
+    
+    .albums-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .album-preview {
+        height: 180px;
+    }
+    
+    .terminal-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .terminal-nav-item {
+        margin-right: 0;
+    }
+    
+    /* Ajustement des marges et paddings */
+    .terminal-content {
+        padding: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    /* Réduction de la taille des ASCII art */
+    .ascii-art {
+        font-size: 0.9em;
+    }
+}
+
+/* Mobiles et petits écrans (< 768px) */
+@media screen and (max-width: 768px) {
+    :root {
+        --terminal-width: 100%;
+        --terminal-padding: 10px;
+    }
+    
+    html, body {
+        font-size: 14px;
+    }
+    
+    body {
+        padding: 10px;
+    }
+    
+    .terminal-container {
+        border-width: 1px;
+        min-height: 85vh;
+        box-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
+    }
+    
+    /* Adaptation du header */
+    .terminal-header {
+        padding: 5px 10px;
+    }
+    
+    /* Grille d'albums en colonne */
+    .albums-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Navigation compacte */
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .nav-item {
+        padding: 5px 0;
+    }
+    
+    /* Articles de blog */
+    .blog-entry {
+        padding: 10px 0;
+    }
+    
+    .blog-title {
+        font-size: 0.9em;
+    }
+    
+    .blog-excerpt {
+        font-size: 0.9em;
+    }
+    
+    /* Formulaire de contact */
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+    
+    .form-label, .terminal-input, .terminal-textarea, .terminal-button {
+        font-size: 14px;
+    }
+    
+    /* Pagination */
+    .blog-pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    /* Réduction des ASCII art ou affichage alternatif */
+    .ascii-art {
+        font-size: 0.8em;
+        display: block;
+        overflow-x: auto;
+        white-space: pre;
+        padding-bottom: 10px;
+    }
+    
+    /* Photo viewer */
+    .photo-container {
+        padding-bottom: 75%; /* Ratio 4:3 pour mobile */
+    }
+    
+    .photo-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 5px;
+    }
+    
+    .photo-counter {
+        order: -1;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    
+    /* Ajustement pour le mode portrait */
+    @media screen and (orientation: portrait) {
+        .terminal-content {
+            padding: 10px;
+        }
+        
+        .photo-container {
+            padding-bottom: 100%; /* Ratio 1:1 pour les téléphones en portrait */
+        }
+        
+        /* Boutons plus grands pour faciliter le tap */
+        .terminal-nav-item, .photo-nav, .terminal-button {
+            padding: 8px 12px;
+        }
+    }
+}
+
+/* Très petits écrans (< 480px) */
+@media screen and (max-width: 480px) {
+    html, body {
+        font-size: 13px;
+    }
+    
+    /* Simplification des éléments d'interface */
+    .terminal-buttons {
+        gap: 5px;
+    }
+    
+    .button {
+        width: 12px;
+        height: 12px;
+        font-size: 10px;
+        line-height: 12px;
+    }
+    
+    /* Adaptation des titres en ASCII art */
+    .ascii-art {
+        font-size: 0.7em;
+    }
+    
+    /* Réduction des marges */
+    .terminal-content {
+        padding: 8px;
+    }
+    
+    /* Ajustement du formulaire */
+    .form-group {
+        margin-bottom: 0.7rem;
+    }
+    
+    .form-label, .terminal-input, .terminal-textarea, .terminal-button {
+        font-size: 13px;
+    }
+    
+    /* Contact info compactée */
+    .contact-direct-item {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+    
+    /* Amélioration de la lisibilité */
+    .terminal-info, .blog-excerpt, .photo-info {
+        line-height: 1.3;
+    }
+}
+
+/* Mode sombre renforcé (prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --scanline-opacity: 0.2;
+        --glow-strength: 2px;
+    }
+    
+    .terminal-container {
+        box-shadow: 0 0 15px rgba(51, 255, 51, 0.7);
+    }
+}
+
+/* Adaptation pour les écrans haute résolution */
+@media screen and (min-width: 1440px) {
+    html, body {
+        font-size: 18px;
+    }
+    
+    :root {
+        --terminal-max-width: 1400px;
+    }
+    
+    .albums-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+    
+    .album-preview {
+        height: 220px;
+    }
+    
+    .terminal-content {
+        padding: 25px;
+    }
+    
+    .photo-viewer {
+        max-width: 1000px;
+    }
+}
+
+/* Mode d'économie de données */
+@media (prefers-reduced-data: reduce) {
+    body::before {
+        display: none; /* Désactivation du bruit de fond */
+    }
+    
+    .scan-lines {
+        opacity: 0.5; /* Réduction de l'opacité des scanlines */
+    }
+    
+    /* Animations réduites */
+    .cursor {
+        animation-duration: 2s;
+    }
+    
+    .album-item:hover {
+        transform: none;
+    }
+    
+    .album-item:hover .album-image {
+        transform: none;
+    }
+    
+    .glow-text {
+        animation: none;
+    }
+    
+    /* Désactivation des effets de glitch */
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+}
+
+/* Pour les utilisateurs qui préfèrent réduire les animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .typing-animation {
+        animation: none;
+        width: 100%;
+    }
+    
+    .cursor {
+        animation: none;
+    }
+    
+    .glow-text {
+        animation: none;
+        text-shadow: 0 0 2px var(--color-text);
+    }
+    
+    .album-item:hover {
+        transform: none;
+    }
+    
+    .album-item:hover .album-image {
+        transform: none;
+    }
+    
+    .glitch {
+        animation: none;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+} 

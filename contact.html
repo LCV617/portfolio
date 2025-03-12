@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Portfolio Terminal</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="scan-lines"></div>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">CONTACT.EXE</div>
+            <div class="terminal-buttons">
+                <span class="button minimize">_</span>
+                <span class="button maximize">□</span>
+                <span class="button close">×</span>
+            </div>
+        </div>
+        
+        <div class="terminal-content">
+            <div class="terminal-nav">
+                <a href="index.html" class="terminal-nav-item">
+                    <span class="command-prefix">></span> RETOUR
+                </a>
+            </div>
+            
+            <div class="ascii-art" id="contact-title"></div>
+            
+            <div class="contact-form-container">
+                <div class="terminal-info">
+                    Pour me contacter, veuillez remplir le formulaire ci-dessous:
+                </div>
+                
+                <form id="contact-form" class="terminal-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <span class="command-prefix">></span> NOM:
+                        </label>
+                        <input type="text" id="name" name="name" class="terminal-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <span class="command-prefix">></span> EMAIL:
+                        </label>
+                        <input type="email" id="email" name="email" class="terminal-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">
+                            <span class="command-prefix">></span> SUJET:
+                        </label>
+                        <input type="text" id="subject" name="subject" class="terminal-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">
+                            <span class="command-prefix">></span> MESSAGE:
+                        </label>
+                        <textarea id="message" name="message" class="terminal-textarea" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="terminal-button">
+                            <span class="command-prefix">></span> ENVOYER
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="form-response" class="terminal-response hidden">
+                    <!-- Les messages de succès ou d'erreur seront affichés ici -->
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="terminal-separator">
+                    ────────────────────────────────────────────────────
+                </div>
+                
+                <div class="contact-direct">
+                    <div class="contact-direct-item">
+                        <span class="contact-label">EMAIL:</span>
+                        <span class="contact-value">contact@monportfolio.com</span>
+                    </div>
+                    
+                    <div class="contact-direct-item">
+                        <span class="contact-label">GITHUB:</span>
+                        <a href="https://github.com/username" target="_blank" class="contact-link">github.com/username</a>
+                    </div>
+                    
+                    <div class="contact-direct-item">
+                        <span class="contact-label">LINKEDIN:</span>
+                        <a href="https://linkedin.com/in/username" target="_blank" class="contact-link">linkedin.com/in/username</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="terminal-input-line">
+                <span class="prompt">></span>
+                <span class="command-text" id="current-command"></span>
+                <span class="cursor" id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/terminal.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html> 
