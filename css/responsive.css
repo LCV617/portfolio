@@ -1,3 +1,245 @@
+/* === MEDIA QUERIES === */
+
+/* Grands écrans (>1200px) */
+@media screen and (min-width: 1201px) {
+    :root {
+        --terminal-width: 85%;
+        --terminal-max-width: 1200px;
+    }
+    
+    body {
+        padding: 2rem;
+    }
+    
+    .ascii-art {
+        font-size: 1em;
+    }
+}
+
+/* Écrans moyens (992px-1200px) */
+@media screen and (max-width: 1200px) {
+    :root {
+        --terminal-width: 90%;
+        --terminal-max-width: 100%;
+    }
+    
+    body {
+        padding: 1.5rem;
+    }
+    
+    .terminal-container {
+        min-height: 70vh;
+    }
+    
+    .ascii-art {
+        font-size: 0.9em;
+    }
+    
+    .terminal-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Tablettes (768px-991px) */
+@media screen and (max-width: 991px) {
+    :root {
+        --terminal-width: 92%;
+        --terminal-padding: 15px;
+    }
+    
+    body {
+        padding: 1rem;
+        font-size: 15px;
+    }
+    
+    .terminal-container {
+        min-height: 60vh;
+    }
+    
+    .ascii-art {
+        font-size: 0.8em;
+        white-space: pre-wrap;
+    }
+    
+    .menu-item {
+        flex: 1 1 calc(33.333% - 20px);
+        min-width: 120px;
+    }
+    
+    .project {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Téléphones larges (576px-767px) */
+@media screen and (max-width: 767px) {
+    :root {
+        --terminal-width: 95%;
+        --terminal-padding: 12px;
+    }
+    
+    body {
+        padding: 0.8rem;
+        font-size: 14px;
+    }
+    
+    .terminal-container {
+        min-height: 55vh;
+    }
+    
+    .ascii-art {
+        font-size: 0.65em;
+        overflow-x: auto;
+    }
+    
+    .menu-item {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 100px;
+        margin-bottom: 8px;
+    }
+    
+    .terminal-title-bar {
+        padding: 4px 8px;
+    }
+    
+    .terminal-title {
+        font-size: 0.9rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}
+
+/* Petits téléphones (<576px) */
+@media screen and (max-width: 575px) {
+    :root {
+        --terminal-width: 98%;
+        --terminal-padding: 10px;
+    }
+    
+    body {
+        padding: 0.5rem;
+        font-size: 13px;
+    }
+    
+    .terminal-container {
+        min-height: 50vh;
+        border-width: 2px;
+    }
+    
+    .ascii-art {
+        display: none; /* Masquer l'ASCII art sur très petits écrans */
+    }
+    
+    .menu-item {
+        flex: 1 1 100%;
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+    
+    .terminal-title-bar {
+        padding: 3px 6px;
+    }
+    
+    .terminal-title {
+        font-size: 0.8rem;
+    }
+    
+    .terminal-controls {
+        gap: 5px;
+    }
+    
+    .form-group label, .form-group input, .form-group textarea {
+        width: 100%;
+        display: block;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Afficher une version simplifiée du titre pour les petits écrans */
+    .mobile-title {
+        display: block;
+        text-align: center;
+        margin: 1rem 0;
+        font-size: 1.2rem;
+        color: var(--color-text-bright);
+    }
+    
+    /* Simplifier les éléments UI pour éviter l'encombrement */
+    .terminal-separator {
+        margin: 1rem 0;
+    }
+    
+    h1, h2 {
+        font-size: 1.1rem;
+    }
+    
+    h3, h4 {
+        font-size: 1rem;
+    }
+    
+    .boot-sequence .boot-log {
+        font-size: 0.8rem;
+    }
+    
+    .progress-bar {
+        width: 150px;
+        height: 8px;
+    }
+}
+
+/* Adaptation des effets pour les appareils à faible puissance */
+@media (prefers-reduced-motion: reduce) {
+    /* Désactiver ou simplifier les animations */
+    @keyframes blink {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+        animation: none;
+    }
+    
+    .terminal-container::before {
+        animation: none;
+    }
+    
+    .crt-effect::before,
+    .crt-effect::after {
+        display: none;
+    }
+    
+    .scan-lines {
+        opacity: 0.03;
+    }
+}
+
+/* Adaptation pour les préférences de contraste élevé */
+@media (prefers-contrast: high) {
+    :root {
+        --color-text: #FFFFFF;
+        --color-text-bright: #FFFFFF;
+        --color-text-dim: rgba(255, 255, 255, 0.8);
+        --color-border: #FFFFFF;
+        --scanline-opacity: 0.02;
+        --noise-opacity: 0.02;
+    }
+    
+    .crt-effect, .scan-lines {
+        display: none;
+    }
+}
+
 /* === STYLES RESPONSIVES === */
 
 /* Tablettes et écrans moyens (768px - 1024px) */
@@ -64,9 +306,8 @@
     }
     
     .terminal-container {
-        border-width: 1px;
+        border-width: var(--pixel-size);
         min-height: 85vh;
-        box-shadow: 0 0 5px rgba(51, 255, 51, 0.3);
     }
     
     /* Adaptation du header */
@@ -179,7 +420,6 @@
     .button {
         width: 12px;
         height: 12px;
-        font-size: 10px;
         line-height: 12px;
     }
     
@@ -217,12 +457,7 @@
 /* Mode sombre renforcé (prefers-color-scheme) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --scanline-opacity: 0.2;
-        --glow-strength: 2px;
-    }
-    
-    .terminal-container {
-        box-shadow: 0 0 15px rgba(51, 255, 51, 0.7);
+        --scanline-opacity: 0.1;
     }
 }
 
@@ -273,17 +508,11 @@
     }
     
     .album-item:hover .album-image {
-        transform: none;
+        filter: none;
     }
     
     .glow-text {
         animation: none;
-    }
-    
-    /* Désactivation des effets de glitch */
-    .glitch::before,
-    .glitch::after {
-        display: none;
     }
 }
 
@@ -307,7 +536,6 @@
     
     .glow-text {
         animation: none;
-        text-shadow: 0 0 2px var(--color-text);
     }
     
     .album-item:hover {
@@ -315,15 +543,10 @@
     }
     
     .album-item:hover .album-image {
-        transform: none;
+        filter: none;
     }
     
     .glitch {
         animation: none;
-    }
-    
-    .glitch::before,
-    .glitch::after {
-        display: none;
     }
 } 

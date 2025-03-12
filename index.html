@@ -3,56 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Terminal</title>
+    <title>Portfolio Amiga Style</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/terminal.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
+    <!-- Effets visuels -->
     <div class="scan-lines"></div>
+    <div class="crt-effect"></div>
+
+    <!-- Terminal principal -->
     <div class="terminal-container">
-        <div class="terminal-header">
-            <div class="terminal-title">TERMINAL v1.0</div>
-            <div class="terminal-buttons">
-                <span class="button minimize">_</span>
-                <span class="button maximize">□</span>
-                <span class="button close">×</span>
-            </div>
+        <!-- Cadre ASCII -->
+        <div class="ascii-border">
+            <div class="top-left">┌</div>
+            <div class="top-right">┐</div>
+            <div class="bottom-left">└</div>
+            <div class="bottom-right">┘</div>
+            <div class="top">───────────────────────────────────────────────</div>
+            <div class="bottom">───────────────────────────────────────────────</div>
+            <div class="left">│</div>
+            <div class="right">│</div>
         </div>
         
-        <div class="terminal-content">
-            <div class="boot-sequence">
-                <div class="boot-text" id="boot-text"></div>
+        <div class="terminal-title-bar">
+            <span class="terminal-title">TERMINAL_1.0</span>
+            <div class="terminal-controls">
+                <span class="terminal-control">-</span>
+                <span class="terminal-control">+</span>
+                <span class="terminal-control">x</span>
             </div>
-            
-            <div class="main-content hidden" id="main-content">
-                <div class="ascii-art" id="ascii-title"></div>
-                
-                <div class="terminal-input-line">
-                    <span class="prompt">></span>
-                    <span class="command-text" id="current-command"></span>
-                    <span class="cursor" id="cursor">█</span>
+        </div>
+        <div class="terminal">
+            <div class="terminal-content">
+                <div class="boot-sequence hidden">
+                    <!-- Le contenu sera injecté par JavaScript -->
                 </div>
                 
-                <div class="navigation">
-                    <div class="nav-item" data-command="ALBUMS">
-                        <span class="command-prefix">></span> ALBUMS
-                    </div>
-                    <div class="nav-item" data-command="BLOG">
-                        <span class="command-prefix">></span> BLOG
-                    </div>
-                    <div class="nav-item" data-command="CONTACT">
-                        <span class="command-prefix">></span> CONTACT
-                    </div>
-                    <div class="nav-item" data-command="ABOUT">
-                        <span class="command-prefix">></span> ABOUT
-                    </div>
+                <div class="terminal-menu hidden">
+                    <button class="menu-item" data-section="about">À PROPOS</button>
+                    <button class="menu-item" data-section="skills">COMPÉTENCES</button>
+                    <button class="menu-item" data-section="projects">PROJETS</button>
+                    <button class="menu-item" data-section="contact">CONTACT</button>
+                    <button class="menu-item" data-section="gallery">GALERIE</button>
+                    <button class="menu-item" data-section="blog">BLOG</button>
                 </div>
+                
+                <!-- Sections cachées initialement -->
+                <section id="about" class="content-section hidden" data-title="À PROPOS">
+                    <h2>À PROPOS</h2>
+                    <p>Je suis un développeur passionné, spécialisé dans la création d'applications web et mobiles. Mon parcours m'a permis de travailler sur des projets variés, allant des sites web simples aux applications complexes utilisant les dernières technologies.</p>
+                    <p>J'aime particulièrement explorer l'intersection entre la technologie et le design, et je m'efforce de créer des interfaces utilisateur élégantes et fonctionnelles.</p>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
+                
+                <section id="skills" class="content-section hidden" data-title="COMPÉTENCES">
+                    <h2>COMPÉTENCES</h2>
+                    <div class="ascii-art">
+/*====================*/
+/*=== COMPÉTENCES ===*/
+/*====================*/
+                    </div>
+                    
+                    <h3>Langages de programmation</h3>
+                    <ul>
+                        <li>JavaScript/TypeScript</li>
+                        <li>Python</li>
+                        <li>HTML/CSS</li>
+                        <li>PHP</li>
+                    </ul>
+                    
+                    <h3>Frameworks & Outils</h3>
+                    <ul>
+                        <li>React/Next.js</li>
+                        <li>Node.js</li>
+                        <li>Express</li>
+                        <li>Git/GitHub</li>
+                    </ul>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
+                
+                <section id="projects" class="content-section hidden" data-title="PROJETS">
+                    <h2>PROJETS</h2>
+                    <p>Voici quelques-uns de mes projets les plus récents:</p>
+                    
+                    <div class="project">
+                        <h3>Projet 1</h3>
+                        <p>Une application web utilisant React et Node.js pour visualiser des données météorologiques en temps réel.</p>
+                        <a href="#" class="project-link">[VOIR PROJET]</a>
+                    </div>
+                    
+                    <div class="project">
+                        <h3>Projet 2</h3>
+                        <p>Une API RESTful pour la gestion de tâches, développée avec Express et MongoDB.</p>
+                        <a href="#" class="project-link">[VOIR PROJET]</a>
+                    </div>
+                    
+                    <div class="project">
+                        <h3>Projet 3</h3>
+                        <p>Un site web statique optimisé pour le SEO, créé avec Next.js et déployé sur Vercel.</p>
+                        <a href="#" class="project-link">[VOIR PROJET]</a>
+                    </div>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
+                
+                <section id="contact" class="content-section hidden" data-title="CONTACT">
+                    <h2>CONTACT</h2>
+                    <p>Vous pouvez me contacter via les moyens suivants:</p>
+                    
+                    <ul>
+                        <li>Email: exemple@email.com</li>
+                        <li>LinkedIn: <a href="#">linkedin.com/in/utilisateur</a></li>
+                        <li>GitHub: <a href="#">github.com/utilisateur</a></li>
+                    </ul>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit">ENVOYER</button>
+                    </form>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
+                
+                <section id="gallery" class="content-section hidden" data-title="GALERIE">
+                    <h2>GALERIE</h2>
+                    <p>Une sélection de mes travaux:</p>
+                    
+                    <div class="gallery-grid">
+                        <!-- Les images seront ajoutées dynamiquement -->
+                    </div>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
+                
+                <section id="blog" class="content-section hidden" data-title="BLOG">
+                    <h2>BLOG</h2>
+                    <p>Mes derniers articles:</p>
+                    
+                    <div class="blog-post">
+                        <h3>Titre de l'article 1</h3>
+                        <span class="post-date">01/01/2023</span>
+                        <p>Résumé de l'article 1...</p>
+                        <a href="blog/article1.html" class="read-more">[LIRE LA SUITE]</a>
+                    </div>
+                    
+                    <div class="blog-post">
+                        <h3>Titre de l'article 2</h3>
+                        <span class="post-date">15/02/2023</span>
+                        <p>Résumé de l'article 2...</p>
+                        <a href="#" class="read-more">[LIRE LA SUITE]</a>
+                    </div>
+                    
+                    <div class="terminal-separator">--------------------</div>
+                    
+                    <div class="prompt">
+                        <span class="prompt-symbol">$</span>
+                        <div class="input-line">retour</div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="js/terminal.js"></script>
     <script src="js/cursor.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html> 

@@ -9,12 +9,13 @@
     color: var(--color-bg);
     padding: 8px 15px;
     font-size: 14px;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: var(--pixel-size) solid var(--color-border);
     user-select: none;
+    text-transform: uppercase;
 }
 
 .terminal-title {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .terminal-buttons {
@@ -28,21 +29,14 @@
     height: 16px;
     text-align: center;
     line-height: 16px;
-    border-radius: 50%;
-    font-size: 12px;
     cursor: pointer;
+    border: var(--pixel-size) solid var(--color-border);
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
-.minimize {
-    background-color: var(--color-warning);
-}
-
-.maximize {
-    background-color: var(--color-accent);
-}
-
-.close {
-    background-color: var(--color-error);
+.minimize, .maximize, .close {
+    background-color: var(--color-text);
 }
 
 /* Contenu du terminal */
@@ -61,18 +55,17 @@
     display: inline-block;
     margin-right: 1rem;
     padding: 5px 10px;
-    border: 1px solid var(--color-text);
-    border-radius: 3px;
+    border: var(--pixel-size) solid var(--color-text);
     transition: all 0.2s;
 }
 
 .terminal-nav-item:hover {
-    background-color: rgba(51, 255, 51, 0.1);
-    text-shadow: 0 0 var(--glow-strength) var(--color-text);
+    background-color: var(--color-text);
+    color: var(--color-bg);
 }
 
 .command-prefix {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin-right: 5px;
 }
 
@@ -85,7 +78,7 @@
 }
 
 .prompt {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin-right: 8px;
 }
 
@@ -96,8 +89,8 @@
 /* Animation du curseur clignotant */
 .cursor {
     display: inline-block;
-    width: 0.6em;
-    height: 1em;
+    width: 8px;
+    height: 16px;
     background-color: var(--color-text);
     animation: blink 1s step-end infinite;
 }
@@ -119,8 +112,7 @@
 }
 
 .nav-item:hover {
-    color: var(--color-accent);
-    text-shadow: 0 0 var(--glow-strength) var(--color-accent);
+    color: var(--color-text-bright);
 }
 
 /* Séquence de démarrage */
@@ -163,8 +155,8 @@
 .terminal-input, .terminal-textarea {
     width: 100%;
     padding: 8px 12px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--color-text);
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-text);
     color: var(--color-text);
     font-family: 'TopazPlus', monospace;
     font-size: 16px;
@@ -172,13 +164,13 @@
 }
 
 .terminal-input:focus, .terminal-textarea:focus {
-    box-shadow: 0 0 5px var(--color-text);
+    border-color: var(--color-text-bright);
 }
 
 .terminal-button {
     padding: 8px 16px;
-    background-color: transparent;
-    border: 1px solid var(--color-text);
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-text);
     color: var(--color-text);
     font-family: 'TopazPlus', monospace;
     font-size: 16px;
@@ -187,27 +179,27 @@
 }
 
 .terminal-button:hover {
-    background-color: rgba(51, 255, 51, 0.1);
-    box-shadow: 0 0 5px var(--color-text);
+    background-color: var(--color-text);
+    color: var(--color-bg);
 }
 
 /* Messages d'erreur et de succès */
 .terminal-response {
     margin-top: 1rem;
     padding: 10px;
-    border: 1px solid;
+    border: var(--pixel-size) solid;
 }
 
 .success-message {
     border-color: var(--color-text);
     color: var(--color-text);
-    background-color: rgba(51, 255, 51, 0.1);
+    background-color: var(--color-bg);
 }
 
 .error-message {
     border-color: var(--color-error);
-    color: var(--color-error);
-    background-color: rgba(255, 0, 0, 0.1);
+    color: var(--color-text-bright);
+    background-color: var(--color-bg);
 }
 
 /* Pagination */
@@ -217,7 +209,7 @@
     align-items: center;
     margin-top: 2rem;
     padding: 10px 0;
-    border-top: 1px solid var(--color-border);
+    border-top: var(--pixel-size) solid var(--color-border);
 }
 
 .pagination-prev, .pagination-next {
@@ -226,7 +218,7 @@
 }
 
 .pagination-prev:hover, .pagination-next:hover {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
 }
 
 .pagination-info {
@@ -244,16 +236,16 @@
         transform: translate(0);
     }
     20% {
-        transform: translate(-3px, 3px);
+        transform: translate(-2px, 2px);
     }
     40% {
-        transform: translate(-3px, -3px);
+        transform: translate(-2px, -2px);
     }
     60% {
-        transform: translate(3px, 3px);
+        transform: translate(2px, 2px);
     }
     80% {
-        transform: translate(3px, -3px);
+        transform: translate(2px, -2px);
     }
     100% {
         transform: translate(0);
@@ -263,117 +255,6 @@
 .glitch {
     position: relative;
     animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both;
-}
-
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.glitch::before {
-    color: var(--color-accent);
-    z-index: -1;
-    clip: rect(24px, 550px, 90px, 0);
-    animation: glitch-anim 5s linear infinite alternate-reverse;
-}
-
-.glitch::after {
-    color: var(--color-accent-alt);
-    z-index: -2;
-    clip: rect(85px, 550px, 140px, 0);
-    animation: glitch-anim 2.5s linear infinite alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% {
-        clip: rect(80px, 9999px, 12px, 0);
-        transform: skew(0.3deg);
-    }
-    5% {
-        clip: rect(78px, 9999px, 52px, 0);
-        transform: skew(0.1deg);
-    }
-    10% {
-        clip: rect(70px, 9999px, 61px, 0);
-        transform: skew(0.5deg);
-    }
-    15% {
-        clip: rect(15px, 9999px, 3px, 0);
-        transform: skew(0.2deg);
-    }
-    20% {
-        clip: rect(13px, 9999px, 75px, 0);
-        transform: skew(0.4deg);
-    }
-    25% {
-        clip: rect(77px, 9999px, 40px, 0);
-        transform: skew(0.8deg);
-    }
-    30% {
-        clip: rect(89px, 9999px, 75px, 0);
-        transform: skew(0.3deg);
-    }
-    35% {
-        clip: rect(76px, 9999px, 9px, 0);
-        transform: skew(0.7deg);
-    }
-    40% {
-        clip: rect(21px, 9999px, 60px, 0);
-        transform: skew(0.1deg);
-    }
-    45% {
-        clip: rect(26px, 9999px, 89px, 0);
-        transform: skew(0.6deg);
-    }
-    50% {
-        clip: rect(41px, 9999px, 32px, 0);
-        transform: skew(0.9deg);
-    }
-    55% {
-        clip: rect(10px, 9999px, 2px, 0);
-        transform: skew(0.7deg);
-    }
-    60% {
-        clip: rect(18px, 9999px, 42px, 0);
-        transform: skew(0.5deg);
-    }
-    65% {
-        clip: rect(84px, 9999px, 22px, 0);
-        transform: skew(0.2deg);
-    }
-    70% {
-        clip: rect(62px, 9999px, 2px, 0);
-        transform: skew(0.8deg);
-    }
-    75% {
-        clip: rect(89px, 9999px, 33px, 0);
-        transform: skew(0.1deg);
-    }
-    80% {
-        clip: rect(26px, 9999px, 13px, 0);
-        transform: skew(0.4deg);
-    }
-    85% {
-        clip: rect(52px, 9999px, 59px, 0);
-        transform: skew(0.3deg);
-    }
-    90% {
-        clip: rect(27px, 9999px, 38px, 0);
-        transform: skew(0.5deg);
-    }
-    95% {
-        clip: rect(99px, 9999px, 3px, 0);
-        transform: skew(0.2deg);
-    }
-    100% {
-        clip: rect(58px, 9999px, 86px, 0);
-        transform: skew(0.6deg);
-    }
 }
 
 /* === STYLES POUR LES ARTICLES DE BLOG === */
@@ -391,7 +272,7 @@
 
 .article-subtitle {
     font-size: 1.2rem;
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin: 1rem 0;
 }
 
@@ -409,14 +290,14 @@
 }
 
 .article-content h2 {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin: 1.5rem 0 1rem 0;
-    border-bottom: 1px solid var(--color-accent);
+    border-bottom: var(--pixel-size) solid var(--color-accent);
     padding-bottom: 0.3rem;
 }
 
 .article-content h3 {
-    color: var(--color-text);
+    color: var(--color-text-bright);
     margin: 1.2rem 0 0.8rem 0;
 }
 
@@ -436,21 +317,21 @@
 .terminal-quote {
     margin: 1.5rem 0;
     padding: 1rem;
-    border-left: 3px solid var(--color-accent);
-    background-color: rgba(0, 255, 255, 0.05);
+    border-left: var(--pixel-size) solid var(--color-accent);
+    background-color: var(--color-bg);
     font-style: italic;
-    color: var(--color-ui);
+    color: var(--color-text-bright);
 }
 
 .code-block {
     margin: 1.5rem 0;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-border);
     font-family: 'TopazPlus', monospace;
     white-space: pre;
     overflow-x: auto;
-    color: var(--color-accent-alt);
+    color: var(--color-text-bright);
 }
 
 /* Footer d'article */
@@ -460,8 +341,9 @@
 
 .article-author {
     margin: 1rem 0;
-    color: var(--color-ui);
-    font-style: italic;
+    color: var(--color-text-bright);
+    font-style: normal;
+    text-transform: uppercase;
 }
 
 .article-navigation {
@@ -477,8 +359,7 @@
 
 .article-nav-next:hover, 
 .article-nav-prev:hover {
-    color: var(--color-accent);
-    text-shadow: 0 0 var(--glow-strength) var(--color-accent);
+    color: var(--color-text-bright);
 }
 
 /* Commentaires */
@@ -487,15 +368,15 @@
 }
 
 .article-comments h3 {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin-bottom: 1rem;
 }
 
 .comment {
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-border);
 }
 
 .comment-header {
@@ -505,8 +386,8 @@
 }
 
 .comment-author {
-    color: var(--color-accent);
-    font-weight: bold;
+    color: var(--color-text-bright);
+    font-weight: normal;
 }
 
 .comment-date {
@@ -526,7 +407,7 @@
 }
 
 .album-notes h3 {
-    color: var(--color-accent);
+    color: var(--color-text-bright);
     margin-bottom: 1rem;
 }
 
@@ -537,7 +418,499 @@
 .terminal-info {
     margin: 1.5rem 0;
     padding: 1rem;
-    background-color: rgba(51, 255, 51, 0.05);
-    border: 1px solid var(--color-text);
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-text);
     color: var(--color-text);
+}
+
+/* === TERMINAL === */
+.terminal {
+    padding: var(--terminal-padding);
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    line-height: 1.4;
+    position: relative;
+    z-index: 10;
+    border: none;
+}
+
+.terminal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+.terminal::-webkit-scrollbar-thumb {
+    background: var(--color-text);
+    border-radius: 0;
+}
+
+/* Cadre ASCII */
+.ascii-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    color: var(--color-text);
+}
+
+.ascii-border .top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ascii-border .top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.ascii-border .bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.ascii-border .bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.ascii-border .top, .ascii-border .bottom {
+    position: absolute;
+    left: 1ch;
+    right: 1ch;
+    height: 1ch;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ascii-border .top {
+    top: 0;
+}
+
+.ascii-border .bottom {
+    bottom: 0;
+}
+
+.ascii-border .left, .ascii-border .right {
+    position: absolute;
+    top: 1ch;
+    bottom: 1ch;
+    width: 1ch;
+}
+
+.ascii-border .left {
+    left: 0;
+}
+
+.ascii-border .right {
+    right: 0;
+}
+
+/* Barre de titre du terminal avec style ASCII */
+.terminal-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    font-weight: normal;
+    border-bottom: none;
+    position: relative;
+}
+
+.terminal-title-bar::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.terminal-title-bar::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.terminal-title {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.terminal-control {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.terminal-control:hover {
+    opacity: 0.7;
+}
+
+/* Contenu du terminal */
+.terminal-content {
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.prompt {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.prompt-symbol {
+    margin-right: 8px;
+    color: var(--color-text-bright);
+    user-select: none;
+}
+
+.input-line {
+    flex-grow: 1;
+    position: relative;
+}
+
+.input-cursor {
+    position: relative;
+    display: inline-block;
+    width: 0.6em;
+    height: 1.2em;
+    background-color: var(--color-text);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Animations d'initialisation */
+.boot-sequence {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-bright);
+}
+
+.boot-log {
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+}
+
+.boot-progress {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 10px;
+    background-color: var(--color-bg);
+    border: var(--pixel-size) solid var(--color-text-dim);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--color-text);
+    width: 0;
+}
+
+.progress-label {
+    margin-left: 10px;
+    color: var(--color-text-dim);
+}
+
+/* Output styling */
+.output-line {
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+}
+
+.error-output {
+    color: var(--color-error);
+}
+
+.warning-output {
+    color: var(--color-warning);
+}
+
+.success-output {
+    color: var(--color-text-bright);
+}
+
+.info-output {
+    color: var(--color-text);
+}
+
+/* Menu et navigation */
+.terminal-menu {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.menu-item {
+    background-color: transparent;
+    color: var(--color-text-bright);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    font-size: 0.9rem;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.menu-item:hover, .menu-item:focus {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    outline: none;
+}
+
+.menu-item:active {
+    transform: scale(0.98);
+}
+
+.menu-item::before {
+    content: '[';
+    margin-right: 4px;
+}
+
+.menu-item::after {
+    content: ']';
+    margin-left: 4px;
+}
+
+/* Style ASCII pour les sections de contenu */
+.content-section {
+    position: relative;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.content-section::before, .content-section::after {
+    content: none;
+}
+
+/* Effets de simulation de terminal */
+.glitch-text {
+    position: relative;
+    color: var(--color-text-bright);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+}
+
+.glitch-text::before {
+    animation: glitch-effect 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-4px, -4px);
+    text-shadow: 1px 0 var(--color-text-bright);
+}
+
+.glitch-text::after {
+    animation: glitch-effect 2s ease-out reverse infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(4px, 4px);
+    text-shadow: -1px 0 var(--color-text-bright);
+}
+
+@keyframes glitch-effect {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-4px, 4px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(4px, 2px);
+    }
+    80% {
+        transform: translate(2px, -4px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Effet CRT */
+.crt-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.crt-effect::before {
+    content: "";
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.1) 90%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.crt-effect::after {
+    content: "";
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Effets de pixels */
+@keyframes flicker {
+    0% { opacity: 1; }
+    3% { opacity: 0.8; }
+    6% { opacity: 1; }
+    7% { opacity: 0.9; }
+    9% { opacity: 1; }
+    11% { opacity: 0.9; }
+    23% { opacity: 1; }
+    37% { opacity: 0.93; }
+    70% { opacity: 1; }
+    72% { opacity: 0.95; }
+    73% { opacity: 1; }
+    88% { opacity: 0.98; }
+    100% { opacity: 1; }
+}
+
+.terminal-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0.15;
+    pointer-events: none;
+    animation: flicker 5s infinite;
+    z-index: 4;
+}
+
+/* Boutons */
+button, .button {
+    background-color: transparent;
+    color: var(--color-text-bright);
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    position: relative;
+    text-transform: uppercase;
+}
+
+button::before, .button::before {
+    content: "[";
+    margin-right: 4px;
+}
+
+button::after, .button::after {
+    content: "]";
+    margin-left: 4px;
+}
+
+button:hover, .button:hover,
+button:focus, .button:focus {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    outline: none;
+}
+
+button:active, .button:active {
+    transform: scale(0.98);
+}
+
+/* Styles pour les bordures ASCII des sections */
+.ascii-section-border {
+    position: absolute;
+    color: var(--color-text);
+    pointer-events: none;
+    line-height: 1;
+    font-family: 'TopazPlus', monospace;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.ascii-section-border.top {
+    top: -1.2em;
+    left: 0;
+}
+
+.ascii-section-border.bottom {
+    bottom: -1.2em;
+    left: 0;
+}
+
+.ascii-section-border.left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1ch;
+    writing-mode: vertical-lr;
+    height: 100%;
+}
+
+.ascii-section-border.right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1ch;
+    writing-mode: vertical-rl;
+    height: 100%;
 } 

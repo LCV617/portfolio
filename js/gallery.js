@@ -4,6 +4,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser la galerie si on est sur la page correspondante
+    if (document.querySelector('.gallery-grid')) {
+        initGallery();
+    }
+    
     // Initialise les interactions pour les albums sur la page d'index
     initAlbumGrid();
     
@@ -309,4 +314,206 @@ function handleFullscreenChange() {
         // Si on quitte le plein écran
         document.body.classList.remove('fullscreen-mode');
     }
+}
+
+/**
+ * Initialise la galerie ASCII Art
+ */
+function initGallery() {
+    const galleryGrid = document.querySelector('.gallery-grid');
+    
+    // Exemples de projets pour la galerie
+    const projects = [
+        {
+            title: 'Projet 1',
+            description: 'Application web React',
+            asciiArt: generateASCIIArt(1)
+        },
+        {
+            title: 'Projet 2',
+            description: 'API RESTful',
+            asciiArt: generateASCIIArt(2)
+        },
+        {
+            title: 'Projet 3',
+            description: 'Site statique Next.js',
+            asciiArt: generateASCIIArt(3)
+        },
+        {
+            title: 'Projet 4',
+            description: 'Application mobile',
+            asciiArt: generateASCIIArt(4)
+        }
+    ];
+    
+    // Créer les éléments de la galerie
+    projects.forEach(project => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item';
+        
+        const ascii = document.createElement('pre');
+        ascii.className = 'ascii-thumbnail';
+        ascii.innerHTML = project.asciiArt;
+        
+        const title = document.createElement('h3');
+        title.textContent = project.title;
+        
+        const description = document.createElement('p');
+        description.textContent = project.description;
+        
+        const link = document.createElement('a');
+        link.href = '#';
+        link.className = 'gallery-item-link';
+        link.textContent = '[VOIR DÉTAILS]';
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showProjectDetails(project);
+        });
+        
+        galleryItem.appendChild(ascii);
+        galleryItem.appendChild(title);
+        galleryItem.appendChild(description);
+        galleryItem.appendChild(link);
+        
+        galleryGrid.appendChild(galleryItem);
+    });
+}
+
+/**
+ * Génère un ASCII art simple pour un projet
+ * @param {number} type - Type de projet (1-4)
+ * @returns {string} ASCII art du projet
+ */
+function generateASCIIArt(type) {
+    const artCollection = [
+        // Projet 1 - Terminal/Interface
+        `+---------------+
+|  [ PROJECT 1 ]  |
+|   ___________   |
+|  |           |  |
+|  | $ _ |     |  |
+|  |___________|  |
+|               |
++---------------+`,
+
+        // Projet 2 - Base de données/API
+        `+---------------+
+|  [ PROJECT 2 ]  |
+|    _______     |
+|   /      /|    |
+|  +------+ |    |
+|  |  DB  | |    |
+|  +------+/     |
+|   API REST     |
++---------------+`,
+
+        // Projet 3 - Site Web
+        `+---------------+
+|  [ PROJECT 3 ]  |
+|  ___      ___  |
+| |   | /\\ |   | |
+| |___||__||___| |
+|  |  WEBSITE |  |
+|  +---------+   |
+|               |
++---------------+`,
+
+        // Projet 4 - Application Mobile
+        `+---------------+
+|  [ PROJECT 4 ]  |
+|    _______     |
+|   |       |    |
+|   |  APP  |    |
+|   |   []  |    |
+|   |_______|    |
+|    MOBILE      |
++---------------+`
+    ];
+    
+    // Index de 0 à 3 pour correspondre au tableau
+    const index = Math.min(Math.max(0, type - 1), artCollection.length - 1);
+    return artCollection[index];
+}
+
+/**
+ * Affiche les détails d'un projet
+ * @param {Object} project - Projet à afficher
+ */
+function showProjectDetails(project) {
+    // Créer une boîte de dialogue modale en style terminal
+    const modal = document.createElement('div');
+    modal.className = 'terminal-modal';
+    
+    const modalContent = document.createElement('div');
+    modalContent.className = 'terminal-modal-content';
+    
+    const modalHeader = document.createElement('div');
+    modalHeader.className = 'terminal-modal-header';
+    modalHeader.innerHTML = `
+        <span class="modal-title">${project.title}</span>
+        <span class="modal-close">x</span>
+    `;
+    
+    const modalBody = document.createElement('div');
+    modalBody.className = 'terminal-modal-body';
+    modalBody.innerHTML = `
+        <pre class="modal-ascii">${project.asciiArt}</pre>
+        <div class="modal-description">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.</p>
+            <div class="modal-tech">
+                <h4>Technologies:</h4>
+                <ul>
+                    <li>HTML/CSS/JavaScript</li>
+                    <li>React.js</li>
+                    <li>Node.js</li>
+                </ul>
+            </div>
+            <a href="#" class="modal-link">[VISITER LE PROJET]</a>
+        </div>
+    `;
+    
+    modalContent.appendChild(modalHeader);
+    modalContent.appendChild(modalBody);
+    modal.appendChild(modalContent);
+    
+    // Ajouter au corps du document
+    document.body.appendChild(modal);
+    
+    // Animation d'ouverture
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+    
+    // Gestionnaire de fermeture
+    const closeButton = modal.querySelector('.modal-close');
+    closeButton.addEventListener('click', function() {
+        closeModal(modal);
+    });
+    
+    // Fermeture en cliquant en dehors
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal(modal);
+        }
+    });
+    
+    // Fermeture avec échap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal(modal);
+        }
+    });
+}
+
+/**
+ * Ferme la boîte de dialogue modale
+ * @param {HTMLElement} modal - Élément modal à fermer
+ */
+function closeModal(modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.remove();
+    }, 300);
 } 
